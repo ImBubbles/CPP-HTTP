@@ -1,0 +1,48 @@
+//
+// Created by bubbles on 8/5/25.
+//
+
+#pragma once
+
+#include <string>
+#include <sstream>
+
+enum TYPE { HTML,
+    CSS,
+    IMAGE_JPEG,
+    IMAGE_PNG,
+    IMAGE_GIF,
+    IMAGE_X_CON,
+    IMAGE_WEBP,
+    APPLICATION_PDF,
+    PLAIN,
+    FAVICON
+};
+
+struct HTTPResult {
+private: // PREDEFINED
+    const std::string httpVersion = "HTTP/1.1";
+public:
+    const TYPE type;
+    const bool success;
+    const int length;
+    const std::string content;
+
+public:
+    HTTPResult(
+        const TYPE& type,
+        const bool success,
+        const int length,
+        std::string& content) :
+    type(type),
+    success(success),
+    length(length),
+    content(std::move(content))
+    {}
+
+    std::string toString() const;
+
+    static std::string typeToString(const TYPE& type);
+    static TYPE extensionToType(const std::string& filePath);
+
+};
