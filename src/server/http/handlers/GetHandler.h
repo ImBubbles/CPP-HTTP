@@ -74,6 +74,16 @@ public:
                 const HTTPResult httpResult(HTML, true, binary.size(), binary);
                 sendHTTPResult(request.clientSocket, httpResult);
             }
+            return;
+        }
+
+        // DEFAULT
+        ServerConfig serverConfig = *loadServerConfig();
+        std::string path = serverConfig.defaultHtml;
+        std::string binary = readFile(path);
+        if (!binary.empty()) {
+            const HTTPResult httpResult(HTML, true, binary.size(), binary);
+            sendHTTPResult(request.clientSocket, httpResult);
         }
 
     }
