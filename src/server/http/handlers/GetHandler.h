@@ -68,7 +68,8 @@ public:
         // PAGE
         if (request.content.empty() && request.target.starts_with("/page/")) {
             const std::string trimmed = request.target.substr(sizeof("/page/")-1, request.target.size());
-            std::string path = "html/" + trimmed + ".html";
+            std::string path = "html/" + trimmed;
+            path = path.ends_with(".html") ? path : path + ".html";
             std::string binary = readFile(path);
             if (!binary.empty()) {
                 const HTTPResult httpResult(HTML, true, binary.size(), binary);

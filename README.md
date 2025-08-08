@@ -7,7 +7,8 @@ Release:
 Release is from CMake build and **intended** to be used on Linux-based systems.
 
 <h1>HTTP Request Usage</h1>
-<h2>1A: GET methods</h3>
+<h2>1A: GET method</h3>
+<p>Call path is how it is called within html files, file path is how the server retrieves the file</p>
 <table>
   <tr>
     <th>Name</th>
@@ -40,8 +41,8 @@ Release is from CMake build and **intended** to be used on Linux-based systems.
   <tr>
     <td>Page</td>
     <td>page/fileName</td>
-    <td>html/</td>
-    <td>Returns fileName.html (meaning don't include .html in the call)</td>
+    <td>html/fileName.html</td>
+    <td>Returns fileName.html</td>
     <td>true</td>
   </tr>
   <tr>
