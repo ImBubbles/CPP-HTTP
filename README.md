@@ -18,7 +18,7 @@ Release is from CMake build and **intended** to be used on Linux-based systems.
   </tr>
   <tr>
     <td>Favicon</td>
-    <td></td>
+    <td>images/favicon.ico</td>
     <td>images/favicon.ico</td>
     <td>Webpage icon</td>
     <td>true</td>
