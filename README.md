@@ -21,7 +21,7 @@ Release is from CMake build and **intended** to be used on Linux-based systems.
     <td>Favicon</td>
     <td>images/favicon.ico</td>
     <td>images/favicon.ico</td>
-    <td>Webpage icon</td>
+    <td>Webpage Icon</td>
     <td>true</td>
   </tr>
   <tr>
@@ -35,7 +35,7 @@ Release is from CMake build and **intended** to be used on Linux-based systems.
     <td>Images</td>
     <td>images/fileName.*</td>
     <td>images/fileName.*</td>
-    <td>Calling of images</td>
+    <td>Image Files</td>
     <td>false</td>
   </tr>
   <tr>
