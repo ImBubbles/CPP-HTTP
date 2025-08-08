@@ -42,14 +42,14 @@ Release is from CMake build and **intended** to be used on Linux-based systems.
     <td>Page</td>
     <td>page/fileName</td>
     <td>html/fileName.html</td>
-    <td>Returns fileName.html</td>
+    <td>Getting fileName.html</td>
     <td>true</td>
   </tr>
   <tr>
     <td>Files</td>
     <td>files/fileName.*</td>
     <td>files/fileName.*</td>
-    <td>Returns fileName.*</td>
+    <td>Getting fileName.*</td>
     <td>false</td>
   </tr>
 </table>
