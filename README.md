@@ -1,4 +1,4 @@
-For those using, please mind you should configure the config.json in /resources and look at main.cpp for how to initialize (only Server.h required for implementation)
+For those using, please mind you should configure the config.json in /resources before long usage and look at main.cpp for how to initialize (only Server.h required for implementation)
 
 Dependencies:
 [nlohmann/json](https://github.com/nlohmann/json) - Required for reading config.json
