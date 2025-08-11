@@ -19,10 +19,10 @@ class HTTPRequestHandler {
     std::thread* readThread;
 
 private:
-    void readRequest() const;
     void handleRequest(HTTPRequest& httpRequest) const;
 
 public:
+    void readRequest() const;
     ~HTTPRequestHandler();
     explicit HTTPRequestHandler(const int& clientSocket);
 };

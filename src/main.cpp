@@ -6,6 +6,8 @@ int main() {
 
     Server httpServer;
 
-    return std::cin.get();
+    while (true) {}
+
+    return 0;
 
 }
