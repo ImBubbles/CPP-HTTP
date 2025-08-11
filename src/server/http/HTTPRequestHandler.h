@@ -16,13 +16,11 @@
 class HTTPRequestHandler {
 
     int clientSocket;
-    std::thread* readThread;
 
 private:
     void handleRequest(HTTPRequest& httpRequest) const;
 
 public:
     void readRequest() const;
-    ~HTTPRequestHandler();
     explicit HTTPRequestHandler(const int& clientSocket);
 };

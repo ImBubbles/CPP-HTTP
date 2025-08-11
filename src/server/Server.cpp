@@ -21,15 +21,16 @@ void Server::handle() {
         Log::debug("Accepted incoming client connection");
 
         // HTTP Request
-        HTTPRequestHandler requestHandler(clientSocket);
+
+        std::thread([clientSocket]() {
+            HTTPRequestHandler handler(clientSocket);
+        }).detach();
 
     }
 }
 
 Server::~Server() {
     Log::info("Closing server...");
-    handlingThread->detach();
-    delete(handlingThread);
     Log::info("Closed client socket thread");
     Log::info("Closing server socket");
     close(serverFD);
@@ -96,7 +97,8 @@ Server::Server() : serverFD(socket(AF_INET, SOCK_STREAM, 0)) {
 
     Log::info("Creating thread for handling client socket connections");
 
-    handlingThread = new std::thread(&Server::handle, this);
+    /*handlingThread = new std::thread(&Server::handle, this)*/;
+    handle();
 
     Log::info("Thread created and attached, server is handling incoming connections");
 

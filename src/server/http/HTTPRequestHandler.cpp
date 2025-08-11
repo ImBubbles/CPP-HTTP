@@ -60,18 +60,8 @@ void HTTPRequestHandler::readRequest() const {
 
 }
 
-HTTPRequestHandler::~HTTPRequestHandler() {
-    /*readThread->detach();
-    delete readThread;*/
-}
-
 
 HTTPRequestHandler::HTTPRequestHandler(const int& clientSocket) {
     this->clientSocket = clientSocket;
-    /*Log::debug("Creating thread for handling client HTTP requests");
-
-    readThread = new std::thread(&HTTPRequestHandler::readRequest, this);
-
-    Log::debug("Thread created and attached, handling HTTP requests from client");*/
     readRequest();
 }
