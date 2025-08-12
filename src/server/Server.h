@@ -21,6 +21,7 @@ class Server {
 private:
     int port, serverFD;
     sockaddr_in* sockAddr;
+    std::thread* handlingThread;
     ServerConfig* srvConfig;
 
     // PV MEMBER FNs

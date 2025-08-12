@@ -97,8 +97,8 @@ Server::Server() : serverFD(socket(AF_INET, SOCK_STREAM, 0)) {
 
     Log::info("Creating thread for handling client socket connections");
 
-    /*handlingThread = new std::thread(&Server::handle, this)*/;
-    handle();
+    handlingThread = new std::thread(&Server::handle, this);
+    //handle();
 
     Log::info("Thread created and attached, server is handling incoming connections");
 
