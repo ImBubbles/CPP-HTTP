@@ -32,6 +32,8 @@ void Server::handle() {
 Server::~Server() {
     Log::info("Closing server...");
     Log::info("Closed client socket thread");
+    handlingThread->detach();
+    delete handlingThread;
     Log::info("Closing server socket");
     close(serverFD);
     Log::info("Server socket closed");
