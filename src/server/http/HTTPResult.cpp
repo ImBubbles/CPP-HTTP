@@ -6,7 +6,7 @@
 
 TYPE HTTPResult::extensionToType(const std::string &filePath) {
     if (!filePath.contains('.'))
-        return TYPE::PLAIN;
+        return TYPE::TEXT_PLAIN;
     const int extensionStart = filePath.find('.');
     std::string extension = filePath.substr(extensionStart);
     if (extension == ".html")
@@ -21,9 +21,11 @@ TYPE HTTPResult::extensionToType(const std::string &filePath) {
         return TYPE::IMAGE_WEBP;
     else if (extension == ".ico")
         return TYPE::FAVICON;
+    else if (extension == ".js")
+        return TYPE::TEXT_JAVASCRIPT;
     else if (extension == ".pdf")
         return TYPE::APPLICATION_PDF;
-    return TYPE::PLAIN;
+    return TYPE::TEXT_PLAIN;
 }
 
 
@@ -45,6 +47,8 @@ std::string HTTPResult::typeToString(const TYPE& type) {
             return "text/css";
         case APPLICATION_PDF:
             return "application/pdf";
+        case TEXT_PLAIN:
+            return "text/javascript";
         default:
             return "text/plain";
     }

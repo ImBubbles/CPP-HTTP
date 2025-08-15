@@ -32,6 +32,13 @@ Release is from CMake build and **intended** to be used on Linux-based systems.
     <td>true</td>
   </tr>
   <tr>
+    <td>JavaScript</td>
+    <td>fileName.js</td>
+    <td>html/fileName.js</td>
+    <td>JavaScript Files</td>
+    <td>true</td>
+  </tr>
+  <tr>
     <td>Images</td>
     <td>images/fileName.*</td>
     <td>images/fileName.*</td>

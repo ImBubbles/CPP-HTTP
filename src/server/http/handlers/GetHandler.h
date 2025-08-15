@@ -31,6 +31,18 @@ public:
             return;
         }
 
+        // JAVASCRIPT
+        if (request.content.empty() && request.target.ends_with(".js")) {
+            const std::string trimmed = request.target.substr(1, request.target.size()-1);
+            std::string path = "html/" + trimmed;
+            std::string binary = readFile(path);
+            if (!binary.empty()) {
+                const HTTPResult httpResult(TEXT_JAVASCRIPT, true, binary.size(), binary);
+                sendHTTPResult(request.clientSocket, httpResult);
+            }
+            return;
+        }
+
         // IMAGES
         if (request.content.empty() && request.target.starts_with("/images/")) {
             const std::string trimmed = request.target.substr(sizeof("/images/")-1, request.target.size());

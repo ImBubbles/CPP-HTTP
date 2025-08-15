@@ -7,7 +7,8 @@
 #include <string>
 #include <sstream>
 
-enum TYPE { HTML,
+enum TYPE {
+    HTML,
     CSS,
     IMAGE_JPEG,
     IMAGE_PNG,
@@ -15,7 +16,8 @@ enum TYPE { HTML,
     IMAGE_X_CON,
     IMAGE_WEBP,
     APPLICATION_PDF,
-    PLAIN,
+    TEXT_JAVASCRIPT,
+    TEXT_PLAIN,
     FAVICON
 };
 
