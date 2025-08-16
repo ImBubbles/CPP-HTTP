@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "server/HTTPServer.h"
+#include "httpserver/HTTPServer.h"
 
 int main() {
 
