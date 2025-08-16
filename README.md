@@ -1,10 +1,25 @@
 For those using, please mind you should configure the config.json in /resources before long usage and look at main.cpp for how to initialize (only Server.h required for implementation)
 
-Dependencies:
+Includes / Dependencies:
 [nlohmann/json](https://github.com/nlohmann/json) - Required for reading config.json
 
 Release:
-Release is from CMake build and **intended** to be used on Linux-based systems.
+Release binary is from CMake executable build and **intended** to be used on Linux-based systems as a static webpage system.
+
+Implementation (CMake):
+```
+include(FetchContent)
+FetchContent_Declare(
+        CPP_HTTP
+        GIT_REPOSITORY https://github.com/ImBubbles/CPP-HTTP.git
+        GIT_TAG <VERSION>
+)
+FetchContent_MakeAvailable(CPP_HTTP)
+```
+And at the bottom:
+```
+target_link_libraries(<PROJECT> PUBLIC CPP-HTTP-LIB)
+```
 
 <h1>HTTP Request Usage</h1>
 <h2>1A: GET method</h3>
