@@ -13,12 +13,12 @@ FetchContent_MakeAvailable(nlohmann_json)
 set(CMAKE_CXX_STANDARD 26)
 
 # INPUTS
-set(CONFIG_JSON ${CMAKE_SOURCE_DIR}/httpserver/defaults/resources/config.json)
-set(EXAMPLE_HTML ${CMAKE_SOURCE_DIR}/httpserver/defaults/html/example.html)
+set(CONFIG_JSON httpserver/defaults/resources/config.json)
+set(EXAMPLE_HTML httpserver/defaults/html/example.html)
 
 # OUTPUTS
-set(CONFIG_HEADER ${CMAKE_SOURCE_DIR}/httpserver/defaults/resources/config.h)
-set(EXAMPLE_HEADER ${CMAKE_SOURCE_DIR}/httpserver/defaults/html/example.h)
+set(CONFIG_HEADER httpserver/defaults/resources/config.h)
+set(EXAMPLE_HEADER httpserver/defaults/html/example.h)
 
 # GENERATE CONFIG JSON
 add_custom_command(
