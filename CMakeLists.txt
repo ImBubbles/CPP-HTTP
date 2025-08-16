@@ -34,10 +34,11 @@ add_custom_command(
         DEPENDS ${EXAMPLE_HTML}
 )
 
+add_custom_target(generate_default_headers DEPENDS ${CONFIG_HEADER} ${EXAMPLE_HEADER})
+
 # EXEC
-add_executable(
-        CPP-HTTP
-        main.cpp
+add_library(
+        CPP-HTTP-LIB
         httpserver/HTTPServer.cpp
         httpserver/HTTPServer.h
         logger/Log.cpp
@@ -66,7 +67,25 @@ add_executable(
         httpserver/util/UtilString.cpp
 )
 
+# LINK THE LIBRARY TO ITS DEPENDENCIES
+target_link_libraries(CPP-HTTP-LIB PRIVATE nlohmann_json::nlohmann_json)
+target_include_directories(CPP-HTTP-LIB PUBLIC ${CMAKE_SOURCE_DIR})
+
+# Make sure the library is built after its custom headers are generated
+add_dependencies(CPP-HTTP-LIB generate_default_headers)
+
+add_executable(
+        CPP-HTTP
+        main.cpp
+)
+
+# LINK THE EXECUTABLE TO THE LIBRARY
+target_link_libraries(CPP-HTTP PRIVATE CPP-HTTP-LIB)
+
+#[[
 # DEPENDENCIES
 add_custom_target(generate_default_headers DEPENDS ${CONFIG_HEADER} ${EXAMPLE_HEADER})
-add_dependencies(CPP-HTTP generate_default_headers)
 target_link_libraries(CPP-HTTP PRIVATE nlohmann_json::nlohmann_json)
+
+# Link the executable to the library
+target_link_libraries(CPP-HTTP PRIVATE cpp-http-lib)]]
