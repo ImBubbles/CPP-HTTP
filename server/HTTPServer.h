@@ -10,11 +10,11 @@
 #include <cstring>
 #include <thread>
 #include "Environment.h"
-#include "ServerConfig.h"
+#include "HTTPServerConfig.h"
 #include "http/HTTPRequestHandler.h"
 #include "../logger/Log.h"
 
-class Server {
+class HTTPServer {
 
     // PV MEMBER VARIABLES
 
@@ -22,7 +22,7 @@ private:
     int port, serverFD;
     sockaddr_in* sockAddr;
     std::thread* handlingThread;
-    ServerConfig* srvConfig;
+    HTTPServerConfig* srvConfig;
 
     // PV MEMBER FNs
 
@@ -37,6 +37,6 @@ private:
     // PUBLIC MEMBER FNs
 
 public:
-    explicit Server();
-    ~Server();
+    explicit HTTPServer();
+    ~HTTPServer();
 };

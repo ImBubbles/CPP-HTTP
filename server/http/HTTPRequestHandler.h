@@ -11,7 +11,7 @@
 #include "../../logger/Log.h"
 #include "HTTPRequest.h"
 #include "HTTP.h"
-#include "../ServerConfig.h"
+#include "../HTTPServerConfig.h"
 
 class HTTPRequestHandler {
 

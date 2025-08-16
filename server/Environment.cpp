@@ -58,7 +58,7 @@ void setupFileEnvironment() {
     Log::debug("Config loaded with code: " + std::to_string(cfgCreate));
 
     isEnvironmentSetup = true;
-    const ServerConfig* serverCfgPtr = loadServerConfig();
+    const HTTPServerConfig* serverCfgPtr = loadServerConfig();
 
     if (serverCfgPtr==nullptr) {
         Log::error("Could not load server config during environment setup");
@@ -66,7 +66,7 @@ void setupFileEnvironment() {
         return;
     }
 
-    const ServerConfig serverCfg = *serverCfgPtr;
+    const HTTPServerConfig serverCfg = *serverCfgPtr;
 
     Log::LOG_FILTER = serverCfg.loggerFilter;
 
@@ -77,7 +77,7 @@ void setupFileEnvironment() {
 
 }
 
-ServerConfig* loadServerConfig() {
+HTTPServerConfig* loadServerConfig() {
     std::ifstream configFile("./resources/config.json");
     if (!configFile.is_open()) {
         return nullptr;
@@ -86,6 +86,6 @@ ServerConfig* loadServerConfig() {
     if (json.is_null()) {
         return nullptr;
     }
-    auto* result = new ServerConfig{json["loggerFilter"], json["port"], json["home"]};
+    auto* result = new HTTPServerConfig{json["loggerFilter"], json["port"], json["home"]};
     return result;
 }

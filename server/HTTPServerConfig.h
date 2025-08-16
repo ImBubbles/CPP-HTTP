@@ -10,15 +10,15 @@
 #include "Environment.h"
 
 
-struct ServerConfig {
+struct HTTPServerConfig {
 protected:
-    static ServerConfig* instance;
+    static HTTPServerConfig* instance;
 public:
     const int loggerFilter;
     const int port;
     const std::string defaultHtml;
 
-    ServerConfig(
+    HTTPServerConfig(
         const int &loggerFilter,
         const int &port,
         std::string defaultHtml
@@ -29,6 +29,6 @@ public:
         instance=this;
     }
 
-    static ServerConfig* getServerConfigInstance();
+    static HTTPServerConfig* getServerConfigInstance();
 
 };

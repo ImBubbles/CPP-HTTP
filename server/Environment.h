@@ -8,11 +8,11 @@
 #include <fstream>
 #include <string>
 
-#include "ServerConfig.h"
+#include "HTTPServerConfig.h"
 #include "../logger/Log.h"
 
 static bool isEnvironmentSetup = false;
 
 void setupFileEnvironment();
 std::string readFile(std::string& filePath);
-struct ServerConfig* loadServerConfig();
+struct HTTPServerConfig* loadServerConfig();

@@ -7,10 +7,10 @@
 
 void HTTPRequestHandler::handleRequest(HTTPRequest &httpRequest) const {
 
-    const ServerConfig* serverConfigPtr = ServerConfig::getServerConfigInstance();
+    const HTTPServerConfig* serverConfigPtr = HTTPServerConfig::getServerConfigInstance();
     if (serverConfigPtr==nullptr)
         return;
-    const ServerConfig serverConfig = *serverConfigPtr;
+    const HTTPServerConfig serverConfig = *serverConfigPtr;
 
     // CHECK IF DEFAULT
     if (httpRequest.method == GET && httpRequest.target == "/") {

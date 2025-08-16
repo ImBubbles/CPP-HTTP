@@ -13,7 +13,7 @@ void sendHtml(const int &clientSocket, std::string &filePath) {
     std::string htmlContent = readFile(filePath);
     std::string response;
 
-    const HTTPResult httpResult(HTML, true, htmlContent.size(), htmlContent);
+    const HTTPResult httpResult(TEXT_HTML, true, htmlContent.size(), htmlContent);
 
     sendHTTPResult(clientSocket, httpResult);
 

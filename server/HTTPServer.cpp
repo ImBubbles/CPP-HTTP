@@ -2,9 +2,9 @@
 // Created by bubbles on 8/4/25.
 //
 
-#include "Server.h"
+#include "HTTPServer.h"
 
-void Server::handle() {
+void HTTPServer::handle() {
     socklen_t sockLen = sizeof(*sockAddr);
     while (true) {
 
@@ -29,7 +29,7 @@ void Server::handle() {
     }
 }
 
-Server::~Server() {
+HTTPServer::~HTTPServer() {
     Log::info("Closing server...");
     Log::info("Closed client socket thread");
     handlingThread->detach();
@@ -43,13 +43,13 @@ Server::~Server() {
     Log::info("Cleared memory-unsafe objects from memory");
 }
 
-Server::Server() : serverFD(socket(AF_INET, SOCK_STREAM, 0)) {
+HTTPServer::HTTPServer() : serverFD(socket(AF_INET, SOCK_STREAM, 0)) {
 
     Log::info("Loading file environment...");
     setupFileEnvironment();
     Log::info("Loaded file environment...");
     Log::info("Loading server config...");
-    srvConfig = ServerConfig::getServerConfigInstance();
+    srvConfig = HTTPServerConfig::getServerConfigInstance();
     if (srvConfig==nullptr) {
         Log::error("Could not load server config");
         exit(EXIT_FAILURE);
@@ -99,7 +99,7 @@ Server::Server() : serverFD(socket(AF_INET, SOCK_STREAM, 0)) {
 
     Log::info("Creating thread for handling client socket connections");
 
-    handlingThread = new std::thread(&Server::handle, this);
+    handlingThread = new std::thread(&HTTPServer::handle, this);
     //handle();
 
     Log::info("Thread created and attached, server is handling incoming connections");

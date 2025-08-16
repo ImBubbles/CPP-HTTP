@@ -3,11 +3,11 @@
 //
 
 
-#include "ServerConfig.h"
+#include "HTTPServerConfig.h"
 
-ServerConfig* ServerConfig::instance = nullptr;
+HTTPServerConfig* HTTPServerConfig::instance = nullptr;
 
-ServerConfig *ServerConfig::getServerConfigInstance() {
+HTTPServerConfig *HTTPServerConfig::getServerConfigInstance() {
     if (instance != nullptr)
         return instance;
     if (!isEnvironmentSetup)

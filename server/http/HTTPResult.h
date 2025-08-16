@@ -8,8 +8,8 @@
 #include <sstream>
 
 enum TYPE {
-    HTML,
-    CSS,
+    TEXT_HTML,
+    TEXT_CSS,
     IMAGE_JPEG,
     IMAGE_PNG,
     IMAGE_GIF,

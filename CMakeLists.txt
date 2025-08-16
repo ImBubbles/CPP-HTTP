@@ -13,12 +13,12 @@ FetchContent_MakeAvailable(nlohmann_json)
 set(CMAKE_CXX_STANDARD 26)
 
 # INPUTS
-set(CONFIG_JSON ${CMAKE_SOURCE_DIR}/src/server/defaults/resources/config.json)
-set(EXAMPLE_HTML ${CMAKE_SOURCE_DIR}/src/server/defaults/html/example.html)
+set(CONFIG_JSON ${CMAKE_SOURCE_DIR}/server/defaults/resources/config.json)
+set(EXAMPLE_HTML ${CMAKE_SOURCE_DIR}/server/defaults/html/example.html)
 
 # OUTPUTS
-set(CONFIG_HEADER ${CMAKE_SOURCE_DIR}/src/server/defaults/resources/config.h)
-set(EXAMPLE_HEADER ${CMAKE_SOURCE_DIR}/src/server/defaults/html/example.h)
+set(CONFIG_HEADER ${CMAKE_SOURCE_DIR}/server/defaults/resources/config.h)
+set(EXAMPLE_HEADER ${CMAKE_SOURCE_DIR}/server/defaults/html/example.h)
 
 # GENERATE CONFIG JSON
 add_custom_command(
@@ -37,31 +37,33 @@ add_custom_command(
 # EXEC
 add_executable(
         CPP-HTTP
-        src/main.cpp
-        src/server/Server.cpp
-        src/server/Server.h
-        src/logger/Log.cpp
-        src/logger/Log.h
-        src/logger/LogLevel.h
-        src/server/http/HTTP.cpp
-        src/server/http/HTTP.h
-        src/server/Environment.cpp
-        src/server/Environment.h
+        main.cpp
+        server/HTTPServer.cpp
+        server/HTTPServer.h
+        logger/Log.cpp
+        logger/Log.h
+        logger/LogLevel.h
+        server/http/HTTP.cpp
+        server/http/HTTP.h
+        server/Environment.cpp
+        server/Environment.h
         ${CONFIG_HEADER}
         ${EXAMPLE_HEADER}
-        src/server/ServerConfig.h
-        src/server/http/HTTPRequestHandler.cpp
-        src/server/http/HTTPRequestHandler.h
-        src/server/http/HTTPRequest.cpp
-        src/server/http/HTTPRequest.h
-        src/server/ServerConfig.cpp
-        src/server/http/HTTPResult.cpp
-        src/server/http/HTTPResult.h
-        src/server/http/handlers/GetHandler.h
-        src/server/http/handlers/PutHandler.h
-        src/server/http/handlers/DeleteHandler.h
-        src/server/http/handlers/PostHandler.h
-        src/server/http/handlers/Handler.h
+        server/HTTPServerConfig.h
+        server/http/HTTPRequestHandler.cpp
+        server/http/HTTPRequestHandler.h
+        server/http/HTTPRequest.cpp
+        server/http/HTTPRequest.h
+        server/HTTPServerConfig.cpp
+        server/http/HTTPResult.cpp
+        server/http/HTTPResult.h
+        server/http/handlers/GetHandler.h
+        server/http/handlers/PutHandler.h
+        server/http/handlers/DeleteHandler.h
+        server/http/handlers/PostHandler.h
+        server/http/handlers/Handler.h
+        server/util/UtilString.h
+        server/util/UtilString.cpp
 )
 
 # DEPENDENCIES

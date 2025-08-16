@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 
-#include "server/Server.h"
+#include "server/HTTPServer.h"
 
 int main() {
 
-    Server httpServer;
+    HTTPServer httpServer;
 
     while (true) {
         std::string response;
