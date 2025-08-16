@@ -74,7 +74,11 @@ add_library(
 
 # LINK THE LIBRARY TO ITS DEPENDENCIES
 target_link_libraries(CPP-HTTP-LIB PUBLIC nlohmann_json::nlohmann_json)
-target_include_directories(CPP-HTTP-LIB PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(CPP-HTTP-LIB
+        PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<INSTALL_INTERFACE:include>
+)
 
 # Make sure the library is built after its custom headers are generated
 if(CPP_HTTP_BUILD_HEADERS)
