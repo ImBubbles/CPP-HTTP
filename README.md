@@ -16,6 +16,8 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(CPP_HTTP)
 ```
+Only use version 1.0.5 and newer -- otherwise, this will not work
+
 And at the bottom:
 ```
 target_link_libraries(<PROJECT> PUBLIC CPP-HTTP-LIB)
