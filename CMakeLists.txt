@@ -12,27 +12,32 @@ FetchContent_MakeAvailable(nlohmann_json)
 
 set(CMAKE_CXX_STANDARD 26)
 
-# INPUTS
-set(CONFIG_JSON ${CMAKE_SOURCE_DIR}/httpserver/defaults/resources/config.json)
-set(EXAMPLE_HTML ${CMAKE_SOURCE_DIR}/httpserver/defaults/html/example.html)
+# SHOULD BUILD HEADERS
+option(CPP_HTTP_BUILD_HEADERS "Build headers from template files" OFF)
 
-# OUTPUTS
-set(CONFIG_HEADER httpserver/defaults/resources/config.h)
-set(EXAMPLE_HEADER httpserver/defaults/html/example.h)
+if(CPP_HTTP_BUILD_HEADERS)
+    # INPUTS
+    set(CONFIG_JSON ${CMAKE_SOURCE_DIR}/httpserver/defaults/resources/config.json)
+    set(EXAMPLE_HTML ${CMAKE_SOURCE_DIR}/httpserver/defaults/html/example.html)
 
-# GENERATE CONFIG JSON
-add_custom_command(
-        OUTPUT ${CONFIG_HEADER}
-        COMMAND xxd -i -n resource_default_config ${CONFIG_JSON} > ${CONFIG_HEADER}
-        DEPENDS ${CONFIG_JSON}
-)
+    # OUTPUTS
+    set(CONFIG_HEADER httpserver/defaults/resources/config.h)
+    set(EXAMPLE_HEADER httpserver/defaults/html/example.h)
 
-# GENERATE EXAMPLE HTML
-add_custom_command(
-        OUTPUT ${EXAMPLE_HEADER}
-        COMMAND xxd -i -n resource_example_html ${EXAMPLE_HTML} > ${EXAMPLE_HEADER}
-        DEPENDS ${EXAMPLE_HTML}
-)
+    # GENERATE CONFIG JSON
+    add_custom_command(
+            OUTPUT ${CONFIG_HEADER}
+            COMMAND xxd -i -n resource_default_config ${CONFIG_JSON} > ${CONFIG_HEADER}
+            DEPENDS ${CONFIG_JSON}
+    )
+
+    # GENERATE EXAMPLE HTML
+    add_custom_command(
+            OUTPUT ${EXAMPLE_HEADER}
+            COMMAND xxd -i -n resource_example_html ${EXAMPLE_HTML} > ${EXAMPLE_HEADER}
+            DEPENDS ${EXAMPLE_HTML}
+    )
+endif()
 
 add_custom_target(generate_default_headers DEPENDS ${CONFIG_HEADER} ${EXAMPLE_HEADER})
 
@@ -81,11 +86,3 @@ add_executable(
 
 # LINK THE EXECUTABLE TO THE LIBRARY
 target_link_libraries(CPP-HTTP PRIVATE CPP-HTTP-LIB)
-
-#[[
-# DEPENDENCIES
-add_custom_target(generate_default_headers DEPENDS ${CONFIG_HEADER} ${EXAMPLE_HEADER})
-target_link_libraries(CPP-HTTP PRIVATE nlohmann_json::nlohmann_json)
-
-# Link the executable to the library
-target_link_libraries(CPP-HTTP PRIVATE cpp-http-lib)]]
