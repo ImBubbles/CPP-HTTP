@@ -16,6 +16,7 @@ enum TYPE {
     IMAGE_X_CON,
     IMAGE_WEBP,
     APPLICATION_PDF,
+    APPLICATION_OCTET_STREAM,
     TEXT_JAVASCRIPT,
     TEXT_PLAIN,
     FAVICON
@@ -28,7 +29,7 @@ public:
     const TYPE type;
     const bool success;
     const int length;
-    const std::string content;
+    std::string content;
 
 public:
     HTTPResult(
@@ -39,8 +40,9 @@ public:
     type(type),
     success(success),
     length(length),
-    content(std::move(content))
-    {}
+    content(std::move(content)) {}
+
+    void addContent(const std::string& key, const std::string& value);
 
     std::string toString() const;
 

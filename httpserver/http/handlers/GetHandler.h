@@ -71,13 +71,17 @@ public:
 
         // FILES
         if (trimmed.starts_with("files/")) {
-            std::string path = "files/" + trimmed;
+            std::string path = "files/" + UtilString::removeFirst("files/", trimmed);
             Log::debug("Preparing file");
             std::string binary = readFile(path);
             Log::debug("Prepared file, ready to send");
             if (!binary.empty()) {
                 Log::debug("Attempting to send file");
-                const HTTPResult httpResult(type, true, binary.size(), binary);
+                HTTPResult httpResult = type==TEXT_PLAIN ?
+                HTTPResult(TYPE::APPLICATION_OCTET_STREAM, true, binary.size(), binary) : HTTPResult(type, true, binary.size(), binary);
+                if (httpResult.type==APPLICATION_OCTET_STREAM) {
+                    httpResult.addContent("Content-Disposition", "attachment");
+                }
                 sendHTTPResult(request.clientSocket, httpResult);
             }
             Log::debug("file sent");

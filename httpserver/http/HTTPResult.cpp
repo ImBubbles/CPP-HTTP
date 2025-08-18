@@ -49,12 +49,23 @@ std::string HTTPResult::typeToString(const TYPE& type) {
             return "text/css";
         case APPLICATION_PDF:
             return "application/pdf";
+        case APPLICATION_OCTET_STREAM:
+            return "application/octet-stream";
         case TEXT_JAVASCRIPT:
             return "text/javascript";
         default:
             return "text/plain";
     }
 }
+
+void HTTPResult::addContent(const std::string &key, const std::string &value) {
+    std::string& content = this->content;
+    content.append(key);
+    content.append(": ");
+    content.append(value);
+    content.append("\n");
+}
+
 
 
 std::string HTTPResult::toString() const {
