@@ -34,7 +34,8 @@ public:
                 || type==TEXT_JAVASCRIPT
                 ) {
 
-            std::string path = "html/" + trimmed;
+            //std::string path = "html/" + trimmed;
+            std::string path = trimmed;
             std::string binary = readFile(path);
             if (!binary.empty()) {
                 const HTTPResult httpResult(type, true, binary.size(), binary);
@@ -45,7 +46,8 @@ public:
 
         // PAGE (STILL HTML DIRECTORY BASED)
         if (trimmed.starts_with("page/")) {
-            std::string path = "html/" + UtilString::removeFirst("page/",trimmed);
+            //std::string path = "html/" + UtilString::removeFirst("page/",trimmed);
+            std::string path = trimmed;
             path = path.ends_with(".html") ? path : path + ".html";
             std::string binary = readFile(path);
             if (!binary.empty()) {
@@ -71,7 +73,8 @@ public:
 
         // FILES
         if (trimmed.starts_with("files/")) {
-            std::string path = "files/" + UtilString::removeFirst("files/", trimmed);
+            //std::string path = "files/" + UtilString::removeFirst("files/", trimmed);
+            std::string path = trimmed;
             Log::debug("Preparing file");
             std::string binary = readFile(path);
             Log::debug("Prepared file, ready to send");

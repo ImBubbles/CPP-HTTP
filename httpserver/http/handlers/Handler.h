@@ -11,7 +11,7 @@
 #include "../HTTPRequest.h"
 #include "../HTTP.h"
 
-class Handler {
+class Handler final {
 public:
     virtual ~Handler() = delete;
 
